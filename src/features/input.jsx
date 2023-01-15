@@ -9,6 +9,7 @@ const Input = ({}) => {
   const [cities, setCities] = useState([]);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [activeCityIndex, setActiveCityIndex] = useState(-1);
+  const [afterOnEnterSelect, setAfterOnEnterSelect] = useState(false)
   const onInput = (event) => {
     const pred = event.target.value;
     console.log(pred);
@@ -29,6 +30,12 @@ const Input = ({}) => {
     if (!value) {
       resetDropdown();
       return;
+    }
+
+    if (afterOnEnterSelect) {
+      resetDropdown();
+      setAfterOnEnterSelect(false)
+      return
     }
 
     setCities(
@@ -65,6 +72,7 @@ const Input = ({}) => {
     if (event.keyCode === eventKeyCodes.ENTER) {
       if (activeCityIndex >= 0) {
         setValue(cities[activeCityIndex]?.name);
+        setAfterOnEnterSelect(true)
       }
       resetDropdown();
     }
@@ -99,7 +107,8 @@ const Input = ({}) => {
   );
 };
 
-
-export const InputContainer = () => <div className={styles.inputContainer}>
-  <Input/>
-</div>
+export const InputContainer = () => (
+  <div className={styles.inputContainer}>
+    <Input />
+  </div>
+);

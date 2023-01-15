@@ -1,26 +1,3 @@
-.dropdownContainer {
-    /*position: absolute;*/
-    /*top: 60px;*/
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    font-size: 36px;
-    z-index: 2;
-}
-
-.dropdownItem {
-    padding: 10px;
-    border: solid 1px;
-    border-radius: 5px;
-}
-
-.dropdownItem:hover {
-    background-color: aliceblue;
-}
-
-.activeDropdownItem {
-    background-color: aliceblue;
-}
 
 .inputWithDropdown {
     display: flex;

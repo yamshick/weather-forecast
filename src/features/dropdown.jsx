@@ -1,12 +1,10 @@
-import styles from "./input.module.css";
-import { useEffect } from "react";
+import styles from "./dropdown.module.css";
 export const Dropdown = ({ items, onSelect, activeCityIndex, onKeyDown }) => {
   return (
     <div className={styles.dropdownContainer}>
       {items?.length
         ? items.map((item, index) => (
             <div
-              //            tabIndex="0"
               key={item?.name || index}
               className={
                 index === activeCityIndex
