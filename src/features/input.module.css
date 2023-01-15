@@ -1,7 +1,11 @@
 .dropdownContainer {
+    /*position: absolute;*/
+    /*top: 60px;*/
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    font-size: 36px;
+    z-index: 2;
 }
 
 .dropdownItem {
@@ -18,12 +22,19 @@
     background-color: aliceblue;
 }
 
-.inputContainer {
+.inputWithDropdown {
     display: flex;
     flex-direction: column;
 }
 
+.inputContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 .inputElement {
+    position: relative;
     width: 360px;
     height: 60px;
     font-size: 24px;

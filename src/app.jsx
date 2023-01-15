@@ -1,9 +1,12 @@
 import styles from "./app.module.css";
-import {Input} from "./features/input";
-export const App = () =>
-    <>
-        <h1>Weather forecast</h1>
-        <div className={styles?.container}>
-            <Input />
-        </div>    </>
-;
+import {InputContainer} from "./features/input";
+import { WeatherCardsContainer } from "./features/weather-cards-container";
+import {Header} from "./components/header";
+
+export const App = () => (
+    <div className={styles?.container}>
+    <Header/>
+      <InputContainer />
+    <WeatherCardsContainer />
+    </div>
+);

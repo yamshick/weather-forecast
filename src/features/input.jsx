@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { eventKeyCodes } from "../constants";
 import { Dropdown } from "./dropdown";
 
-export const Input = ({}) => {
+const Input = ({}) => {
   const [value, setValue] = useState("");
   const [cities, setCities] = useState([]);
-  const [activeCityName, setActiveCityName] = useState();
+  const [isMouseOver, setIsMouseOver] = useState(false);
   const [activeCityIndex, setActiveCityIndex] = useState(-1);
   const onInput = (event) => {
     const pred = event.target.value;
@@ -18,6 +18,11 @@ export const Input = ({}) => {
   const resetDropdown = () => {
     setCities([]);
     setActiveCityIndex(-1);
+    console.log("resetDropdown", { cities, activeCityIndex });
+  };
+
+  const onMouseOver = () => {
+    setIsMouseOver(true);
   };
 
   useEffect(() => {
@@ -36,9 +41,7 @@ export const Input = ({}) => {
   }, [value]);
 
   const onKeyDown = (event) => {
-    console.log(event, cities);
     if (!cities.length) return;
-
     // if (event.keyCode === eventKeyCodes.ARROW_DOWN) {
     //   setActiveCityIndex(0);
     // }
@@ -48,18 +51,21 @@ export const Input = ({}) => {
     // }
 
     // TODO
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" && !isMouseOver) {
       setActiveCityIndex((activeCityIndex + 1) % cities.length);
     }
 
     // TODO
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" && !isMouseOver) {
       setActiveCityIndex(
         activeCityIndex === 0 ? cities.length - 1 : activeCityIndex - 1
       );
     }
 
     if (event.keyCode === eventKeyCodes.ENTER) {
+      if (activeCityIndex >= 0) {
+        setValue(cities[activeCityIndex]?.name);
+      }
       resetDropdown();
     }
   };
@@ -76,20 +82,24 @@ export const Input = ({}) => {
   };
 
   return (
-    <div onKeyDown={onKeyDown} className={styles.inputContainer}>
+    <div onKeyDown={onKeyDown} className={styles.inputWithDropdown}>
       <input
         type={"text"}
         className={styles.inputElement}
         onInput={onInput}
-        // onKeyDown={onKeyDown}
         value={value}
       />
       <Dropdown
+        onMouseOver={onMouseOver}
         items={cities}
         onSelect={onSelect}
         activeCityIndex={activeCityIndex}
-        // onKeyDown={onDropdownKeyDown}
       />
     </div>
   );
 };
+
+
+export const InputContainer = () => <div className={styles.inputContainer}>
+  <Input/>
+</div>
