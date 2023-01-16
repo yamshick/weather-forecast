@@ -7,9 +7,8 @@ import { useFetch } from "./hooks/useFetch";
 
 export const App = () => {
   const [place, setPlace] = useState(null);
-  const { isLoading, data, error } = useFetch(place);
+  const { isLoading, forecast, error } = useFetch(place);
   const onSelect = (place) => {
-    console.log({ place });
     setPlace(
       place && {
         latitude: place?.lat,
@@ -18,14 +17,13 @@ export const App = () => {
     );
   };
 
-  console.log("App", { data });
   return (
     <div className={styles?.container}>
       <Header />
       <InputContainer onSelect={onSelect} />
       {place && (
         <WeatherCardsContainer
-          data={data}
+          forecast={forecast}
           isLoading={isLoading}
           error={error}
         />
@@ -33,3 +31,4 @@ export const App = () => {
     </div>
   );
 };
+//

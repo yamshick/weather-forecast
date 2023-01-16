@@ -1,6 +1,5 @@
 export const weatherMapper = (data) => {
   const forecast = [];
-  console.log("weatherMapper", { data });
   try {
     const { daily } = data;
     for (let i = 0; i < 7; i++) {
@@ -17,6 +16,5 @@ export const weatherMapper = (data) => {
   } catch (e) {
     console.log(e);
   }
-  console.log({ forecast });
   return forecast;
 };

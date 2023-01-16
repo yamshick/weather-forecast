@@ -1,14 +1,14 @@
 import { WeatherCard } from "./weather-card";
 import styles from "./weather-cards-container.module.css";
 
-export const WeatherCardsContainer = ({ data, isLoading, error }) => {
+export const WeatherCardsContainer = ({ forecast, isLoading, error }) => {
   if (error) return <div>Error</div>;
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className={styles.cardsContainer}>
-      {data &&
-        data.map(
+      {forecast &&
+        forecast.map(
           ({
             date,
             maxT,

@@ -9,26 +9,25 @@ const defaultParams = {
 };
 export const useFetch = (params) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState(null);
+  const [forecast, setForecast] = useState(null);
   const [error, setError] = useState(null);
 
-  console.log({ params });
   useEffect(() => {
-    setIsLoading(true);
     if (params?.longitude && params?.latitude) {
+      setIsLoading(true);
+
       WeatherService.get({ ...defaultParams, ...params })
         .then((res) => {
-          console.log("useFetch", { res });
-          setData(weatherMapper(res));
+          setForecast(weatherMapper(res));
         })
         .catch((e) => {
           console.log(e);
           setError(e);
         })
         .finally(() => setIsLoading(false));
+    } else {
+      setForecast(null);
     }
-    setIsLoading(false);
   }, [params]);
-
-  return { isLoading, data, error };
+  return { isLoading, forecast, error };
 };

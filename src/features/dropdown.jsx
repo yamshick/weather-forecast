@@ -12,7 +12,6 @@ export const Dropdown = ({ items, onSelect, activeCityIndex, onKeyDown }) => {
                   : styles.dropdownItem
               }
               onClick={(event) => onSelect(item)}
-              onKeyDown={console.log}
             >
               {item?.name}
             </div>

@@ -1,6 +1,7 @@
 import { WEATHER_SERVICE_API } from "../api";
 
-const QUERY = "?latitude=52.52&longitude=13.41&hourly=temperature_2m";
+const delay = new Promise((res) => setTimeout(res, 3000));
+
 export const WeatherService = {
   get: async (params) => {
     let query = "?";
@@ -9,6 +10,7 @@ export const WeatherService = {
     });
     query = query.substring(0, query.length - 1);
     // const data = await fetch(`${WEATHER_SERVICE_API}${QUERY}`);
+    await delay;
     const data = await fetch(`${WEATHER_SERVICE_API}${query}`);
     return data.json();
   },
