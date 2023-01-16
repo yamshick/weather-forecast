@@ -5,6 +5,10 @@ import Snowy from "assets/icons/snowy-1.svg";
 import Thunder from "assets/icons/thunder.svg";
 import styles from "./weather-card.module.css";
 
+import { weatherTypeMapper } from "service/type-mapper";
+import { CardDate } from "./card-date";
+import { CardWind } from "./card-wind";
+
 const weatherTypeMap = {
   cloudy: <Cloudy />,
   sunny: <Sunny />,
@@ -13,11 +17,27 @@ const weatherTypeMap = {
   thunder: <Thunder />,
 };
 
-export const WeatherCard = ({ type }) => {
+export const WeatherCard = ({
+  date,
+  maxT,
+  minT,
+  precipitationSum,
+  rainSum,
+  snowfallSum,
+  windSpeedMax,
+}) => {
+  const type = weatherTypeMapper({ rainSum, precipitationSum, snowfallSum });
   return (
     <div className={styles.card}>
-      {weatherTypeMap[type] || null}
-      <div>15 C</div>
+      {/*{weatherTypeMap[type] || null}*/}
+      {/*<div>15 C</div>*/}
+      <CardDate date={date} />
+      {weatherTypeMap[type]}
+      <div>max: {maxT} C</div>
+      <div>min: {minT} C</div>
+      {/*<div> Осадки: {precipitationSum} </div>*/}
+      {/*<div> Снег: {snowfallSum} </div>*/}
+      <CardWind windSpeed={windSpeedMax} />
     </div>
   );
 };

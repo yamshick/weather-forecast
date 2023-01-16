@@ -1,2 +1,1 @@
-export class HttpService {
-}
+export class HttpService {}

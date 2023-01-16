@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { eventKeyCodes } from "../constants";
 import { Dropdown } from "./dropdown";
 
-const Input = ({onSelect}) => {
+const Input = ({ onSelect }) => {
   const [value, setValue] = useState("");
   const [cities, setCities] = useState([]);
   // TODO
@@ -67,10 +67,10 @@ const Input = ({onSelect}) => {
 
     if (event.keyCode === eventKeyCodes.ENTER) {
       if (activeCityIndex >= 0) {
-        const selectedCity = cities[activeCityIndex]?.name
-        setValue(selectedCity);
+        const selectedCity = cities[activeCityIndex];
+        setValue(selectedCity.name);
         setAfterOnEnterSelect(true);
-        onSelect(selectedCity)
+        onSelect(selectedCity);
       }
       resetDropdown();
     }
@@ -81,10 +81,9 @@ const Input = ({onSelect}) => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const onDropdownClick = (item) => {
-    const selectedCity = item?.name
-    setValue(selectedCity);
-    onSelect(selectedCity)
+  const onDropdownClick = (selectedCity) => {
+    setValue(selectedCity.name);
+    onSelect(selectedCity);
     resetDropdown();
   };
 
@@ -106,8 +105,8 @@ const Input = ({onSelect}) => {
   );
 };
 
-export const InputContainer = ({onSelect}) => (
+export const InputContainer = ({ onSelect }) => (
   <div className={styles.inputContainer}>
-    <Input onSelect={onSelect}/>
+    <Input onSelect={onSelect} />
   </div>
 );
