@@ -15,6 +15,7 @@ export const weatherMapper = (data) => {
     }
   } catch (e) {
     console.log(e);
+    throw e;
   }
   return forecast;
 };

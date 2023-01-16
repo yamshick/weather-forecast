@@ -8,6 +8,7 @@ import styles from "./weather-card.module.css";
 import { weatherTypeMapper } from "service/type-mapper";
 import { CardDate } from "./card-date";
 import { CardWind } from "./card-wind";
+import { CardTemp } from "./card-temp";
 
 const weatherTypeMap = {
   cloudy: <Cloudy />,
@@ -29,14 +30,9 @@ export const WeatherCard = ({
   const type = weatherTypeMapper({ rainSum, precipitationSum, snowfallSum });
   return (
     <div className={styles.card}>
-      {/*{weatherTypeMap[type] || null}*/}
-      {/*<div>15 C</div>*/}
       <CardDate date={date} />
       {weatherTypeMap[type]}
-      <div>max: {maxT} C</div>
-      <div>min: {minT} C</div>
-      {/*<div> Осадки: {precipitationSum} </div>*/}
-      {/*<div> Снег: {snowfallSum} </div>*/}
+      <CardTemp minT={minT} maxT={maxT} />
       <CardWind windSpeed={windSpeedMax} />
     </div>
   );
