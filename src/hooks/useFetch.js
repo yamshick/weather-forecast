@@ -6,6 +6,7 @@ const defaultParams = {
   daily:
     "temperature_2m_max,temperature_2m_min,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max",
   timezone: "Europe%2FMoscow",
+  windspeed_unit: 'ms'
 };
 export const useFetch = (params) => {
   const [isLoading, setIsLoading] = useState(false);
