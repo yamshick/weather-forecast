@@ -1,6 +1,6 @@
 import styles from "./app.module.css";
-import { InputContainer } from "./features/input";
-import { WeatherCardsContainer } from "./features/weather-cards-container";
+import { InputContainer } from "./components/input";
+import { WeatherCardsContainer } from "./components/weather-cards-container";
 import { Header } from "./components/header";
 import { useState } from "react";
 import { useFetch } from "./hooks/useFetch";
