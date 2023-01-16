@@ -4,22 +4,21 @@ import { useEffect, useState } from "react";
 import { eventKeyCodes } from "../constants";
 import { Dropdown } from "./dropdown";
 
-const Input = ({}) => {
+const Input = ({onSelect}) => {
   const [value, setValue] = useState("");
   const [cities, setCities] = useState([]);
+  // TODO
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [activeCityIndex, setActiveCityIndex] = useState(-1);
-  const [afterOnEnterSelect, setAfterOnEnterSelect] = useState(false)
+  const [afterOnEnterSelect, setAfterOnEnterSelect] = useState(false);
   const onInput = (event) => {
     const pred = event.target.value;
-    console.log(pred);
     setValue(pred);
   };
 
   const resetDropdown = () => {
     setCities([]);
     setActiveCityIndex(-1);
-    console.log("resetDropdown", { cities, activeCityIndex });
   };
 
   const onMouseOver = () => {
@@ -34,8 +33,8 @@ const Input = ({}) => {
 
     if (afterOnEnterSelect) {
       resetDropdown();
-      setAfterOnEnterSelect(false)
-      return
+      setAfterOnEnterSelect(false);
+      return;
     }
 
     setCities(
@@ -50,11 +49,8 @@ const Input = ({}) => {
   const onKeyDown = (event) => {
     if (!cities.length) return;
     // if (event.keyCode === eventKeyCodes.ARROW_DOWN) {
-    //   setActiveCityIndex(0);
     // }
-    //
     // if (event.keyCode === eventKeyCodes.ARROW_UP) {
-    //   setActiveCityIndex(cities.length - 1);
     // }
 
     // TODO
@@ -71,8 +67,10 @@ const Input = ({}) => {
 
     if (event.keyCode === eventKeyCodes.ENTER) {
       if (activeCityIndex >= 0) {
-        setValue(cities[activeCityIndex]?.name);
-        setAfterOnEnterSelect(true)
+        const selectedCity = cities[activeCityIndex]?.name
+        setValue(selectedCity);
+        setAfterOnEnterSelect(true);
+        onSelect(selectedCity)
       }
       resetDropdown();
     }
@@ -83,9 +81,10 @@ const Input = ({}) => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const onSelect = (item) => {
-    console.log(item);
-    setValue(item?.name);
+  const onDropdownClick = (item) => {
+    const selectedCity = item?.name
+    setValue(selectedCity);
+    onSelect(selectedCity)
     resetDropdown();
   };
 
@@ -100,15 +99,15 @@ const Input = ({}) => {
       <Dropdown
         onMouseOver={onMouseOver}
         items={cities}
-        onSelect={onSelect}
+        onSelect={onDropdownClick}
         activeCityIndex={activeCityIndex}
       />
     </div>
   );
 };
 
-export const InputContainer = () => (
+export const InputContainer = ({onSelect}) => (
   <div className={styles.inputContainer}>
-    <Input />
+    <Input onSelect={onSelect}/>
   </div>
 );
