@@ -21,6 +21,7 @@ const Input = ({ onSelect }) => {
     setActiveCityIndex(-1);
   };
 
+  // TODO
   const onMouseOver = () => {
     setIsMouseOver(true);
   };
@@ -28,6 +29,7 @@ const Input = ({ onSelect }) => {
   useEffect(() => {
     if (!value) {
       resetDropdown();
+      onSelect(null);
       return;
     }
 
