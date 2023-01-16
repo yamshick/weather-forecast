@@ -1,15 +1,15 @@
 import { WeatherCard } from "./weather-card";
 import styles from "./weather-cards-container.module.css";
-import { Spinner } from "./spinner";
+import { Spinner } from "../spinner/spinner";
 
 export const WeatherCardsContainer = ({ forecast, isLoading, error }) => {
-  if (error) return <div style={styles.container}>Error</div>;
-    // if (isLoading) return <div>Loading</div>
+  if (error) return <div className={styles.errorContainer}>Error</div>;
+
   if (isLoading) {
     return (
-        <div className={styles.container}>
-          <Spinner/>
-        </div>
+      <div className={styles.container}>
+        <Spinner />
+      </div>
     );
   }
 

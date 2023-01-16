@@ -4,6 +4,13 @@
     margin-top: 10px;
 }
 
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 36px;
+}
+
 .cardsContainer {
     margin-top: 5px;
     display: flex;

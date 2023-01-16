@@ -1,7 +1,7 @@
-import { dictCities } from "../dictionaries/cities";
+import { dictCities } from "../../dictionaries/cities";
 import styles from "./input.module.css";
 import { useEffect, useState } from "react";
-import { eventKeyCodes } from "../constants";
+import { eventKeyCodes } from "../../constants";
 import { Dropdown } from "./dropdown";
 
 const Input = ({ onSelect }) => {

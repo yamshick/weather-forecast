@@ -19,10 +19,11 @@ export const useFetch = (params) => {
 
       WeatherService.get({ ...defaultParams, ...params })
         .then((res) => {
+          console.log('useEffect', {res})
           setForecast(weatherMapper(res));
         })
         .catch((e) => {
-          console.log(e);
+          console.log('useFetch', e);
           setError(e);
         })
         .finally(() => setIsLoading(false));
