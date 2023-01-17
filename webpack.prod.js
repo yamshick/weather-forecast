@@ -13,6 +13,7 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      favicon: path.resolve(__dirname, "./src/assets/icons/weather_sunset.svg"),
     }),
   ],
 });
