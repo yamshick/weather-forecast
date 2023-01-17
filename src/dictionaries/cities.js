@@ -35,9 +35,24 @@ export const dictCities = [
     long: "13.144554",
   },
   {
+    name: "Frankfurt am Main",
+    lat: "50.1211277",
+    long: "8.496481",
+  },
+  {
     name: "Hamburg",
     lat: "53.5582447",
     long: "9.6476445",
+  },
+  {
+    name: "Zagreb",
+    lat: "45.8401104",
+    long: "15.8242481",
+  },
+  {
+    name: "Budapest",
+    lat: "47.4811281",
+    long: "18.9902198",
   },
   {
     name: "Minsk",
@@ -174,6 +189,11 @@ export const dictCities = [
     name: "Calgary",
     lat: "51.0272883",
     long: "-114.3680137",
+  },
+  {
+    name: "Edmonton",
+    lat: "53.5263531",
+    long: "-113.7729143",
   },
 
   {
