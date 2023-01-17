@@ -86,6 +86,7 @@ const Input = ({ onSelect }) => {
   const onDropdownClick = (selectedCity) => {
     setValue(selectedCity.name);
     onSelect(selectedCity);
+    setAfterOnEnterSelect(true);
     resetDropdown();
   };
 
